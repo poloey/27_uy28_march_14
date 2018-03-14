@@ -14,12 +14,16 @@ Latter one is better since its clear to us.
 getting offset value dynamically by calculating limit and $page number
 
 ~~~php
-$page = 1;
-if (isset($_GET['page'])) {
-  $page = $_GET['page'];
-}
-$limit = 20;
-$offset = $page * $limit - $limit; // (current_page_number * limit - limit)
+// $page = isset($_GET['page']) ? $_GET['page'] : 1;
+// if (isset($_GET['page'])) {
+//  $page = $_GET['page'];
+// }else {
+//  $page = 1;
+// }
+$page = $_GET['page'] ?? 1;
+//$offset = ($page -1) * $limit;
+$offset = $page * $limit - $limit;
+
 ~~~
 
 ## total row in database
